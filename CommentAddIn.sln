@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentAddIn", "CommentAddIn\CommentAddIn.csproj", "{F7DC1478-B1C2-4D7D-B31A-0A0247CDEE6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentAddInWeb", "CommentAddInWeb\CommentAddInWeb.csproj", "{562AB52A-66D9-496B-BC08-E11490857739}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7DC1478-B1C2-4D7D-B31A-0A0247CDEE6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7DC1478-B1C2-4D7D-B31A-0A0247CDEE6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7DC1478-B1C2-4D7D-B31A-0A0247CDEE6B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F7DC1478-B1C2-4D7D-B31A-0A0247CDEE6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7DC1478-B1C2-4D7D-B31A-0A0247CDEE6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7DC1478-B1C2-4D7D-B31A-0A0247CDEE6B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{562AB52A-66D9-496B-BC08-E11490857739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{562AB52A-66D9-496B-BC08-E11490857739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{562AB52A-66D9-496B-BC08-E11490857739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{562AB52A-66D9-496B-BC08-E11490857739}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {710E1D45-67B2-4CC9-8486-60A885257F60}
+	EndGlobalSection
+EndGlobal
