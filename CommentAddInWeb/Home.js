@@ -50,13 +50,13 @@
             success: function (data) {
                 $("#jsGrid").jsGrid({
 
-                    height: "90%",
+                    height: "500px",
                     width: "100%",
                     filtering: true,
                     sorting: true,
                     paging: true,
-
-                    pageSize: 15,
+                    autoload: true,
+                    pageSize: 10,
                     pageButtonCount: 5,
 
                     data:data,
