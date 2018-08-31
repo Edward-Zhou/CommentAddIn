@@ -24,22 +24,27 @@ namespace CommentAddInWeb
         /// <returns></returns>
         public static ICollection<CommentRange> ConvertStreamToCommentRange(Stream stream)
         {
+            List<CommentRange> commentRanges = new List<CommentRange>();
+
             using (var wordDoc = WordprocessingDocument.Open(stream, true))
             {
                 MainDocumentPart mainPart = wordDoc.MainDocumentPart;
                 var document = mainPart.Document;
+                if (mainPart.WordprocessingCommentsPart == null)
+                {
+                    return commentRanges;
+                }
                 var comments = mainPart.WordprocessingCommentsPart.Comments.ChildElements;
-                List<CommentRange> commentRanges = new List<CommentRange>();
 
                 foreach (Comment comment in comments)
                 {
                     CommentRange commentRange = new CommentRange();
-                    commentRange.Id = comment.Id;
+                    commentRange.Id = int.Parse(comment.Id); //comment id is started from 0
                     commentRange.Initials = comment.Initials;
                     commentRange.Date = comment.Date;
                     commentRange.Author = comment.Author;
                     commentRange.Text = comment.InnerText;
-                    OpenXmlElement rangeStart = document.Descendants<CommentRangeStart>().Where(c => c.Id == commentRange.Id).FirstOrDefault();
+                    OpenXmlElement rangeStart = document.Descendants<CommentRangeStart>().Where(c => c.Id.Value == comment.Id.Value).FirstOrDefault();
                     rangeStart = rangeStart.NextSibling();
 
                     List<OpenXmlElement> referenced = new List<OpenXmlElement>();
@@ -78,12 +83,12 @@ namespace CommentAddInWeb
                 foreach (Comment comment in comments)
                 {
                     CommentRange commentRange = new CommentRange();
-                    commentRange.Id = comment.Id;
+                    commentRange.Id = int.Parse(comment.Id);
                     commentRange.Initials = comment.Initials;
                     commentRange.Date = comment.Date;
                     commentRange.Author = comment.Author;
                     commentRange.Text = comment.InnerText;
-                    OpenXmlElement rangeStart = document.Descendants<CommentRangeStart>().Where(c => c.Id == commentRange.Id).FirstOrDefault();
+                    OpenXmlElement rangeStart = document.Descendants<CommentRangeStart>().Where(c => c.Id.Value == comment.Id.Value).FirstOrDefault();
                     List<OpenXmlElement> referenced = new List<OpenXmlElement>();
                     List<Range> ranges = new List<Range>();
                     rangeStart = rangeStart.NextSibling();

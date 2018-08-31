@@ -36,6 +36,7 @@
         });
     };
     function comment(ooXml) {
+
         //$.get("/api/comments", function (data) {
         //    showNotification("result",data);
         //});
@@ -47,7 +48,26 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                showNotification("result", data.value);
+                $("#jsGrid").jsGrid({
+
+                    height: "90%",
+                    width: "100%",
+                    filtering: true,
+                    sorting: true,
+                    paging: true,
+
+                    pageSize: 15,
+                    pageButtonCount: 5,
+
+                    data:data,
+                    fields: [
+                        { name: "Id", type: "number", width: 150, validate: "required" },
+                        { name: "CommentedText", type: "text", width: 200 },
+                        { name: "Date", type: "date", width: 100 },
+                        { name: "Author", type: "text", width: 200 },
+                        { name: "Text", type: "text", width: 200 },
+                    ]
+                });
              },
             failure: function (errMsg) {
                 showNotification("result",data);
@@ -63,14 +83,47 @@
             var bodyOOXML = body.getOoxml();
 
             // Queue a commmand to clear the contents of the body.
-            body.clear();
+            //body.clear();
             // Queue a command to insert text into the end of the Word document body.
             body.insertText(
                 "This is a sample text inserted in the document",
                 Word.InsertLocation.end);
 
             // Synchronize the document state by executing the queued commands, and return a promise to indicate task completion.
-            return context.sync();
+            return context.sync().then(function () {
+                var currentOOXML = "";
+                currentOOXML = bodyOOXML.value;
+                $(function () {
+                    $("#jsGrid").jsGrid({
+                        height: "auto",
+                        width: "100%",
+
+                        sorting: true,
+                        paging: false,
+                        autoload: true,
+                        loadData: function (filter) {
+                            return $.ajax({
+                                type: "POST",
+                                url: "/api/comments/convertOOXmlToComments",
+                                // The key needs to match your method's input parameter (case-sensitive).
+                                data: JSON.stringify(currentOOXML),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                            });
+                        },
+
+                        fields: [
+                            //{ name: "Id", type: "number", width: 150, validate: "required" },
+                            //{ name: "Date", type: "date", width: 50 },
+                            { name: "Author", type: "text", width: 200 },
+                            //{ name: "Text", type: "text", width: 200 },
+                            //{ type: "control" }
+                        ]
+                    });
+
+                });
+
+            });
         })
         .catch(errorHandler);
     }
