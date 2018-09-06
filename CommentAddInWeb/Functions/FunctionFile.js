@@ -1,8 +1,10 @@
 ﻿// The initialize function must be run each time a new page is loaded.
 (function () {
-    Office.initialize = function (reason) {
-        // If you need to initialize something you can do so here.
-
+    Office.initialize = function () {
+        //Office is ready
+        $(document).ready(function () {
+            //the document is ready
+        });
     };
 })();
 
@@ -67,12 +69,12 @@ function eventHandler(arg) {
 }
 
 function openDialog() {
-    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog.html",
+    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog/Dialog.html",
         { height: 50, width: 50 }, dialogCallback);
 }
 
 function openDialogAsIframe() {
     //IMPORTANT: IFrame mode only works in Online (Web) clients. Desktop clients (Windows, IOS, Mac) always display as a pop-up inside of Office apps. 
-    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog.html",
+    Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog/Dialog.html",
         { height: 50, width: 50, displayInIframe: true }, dialogCallback);
 }

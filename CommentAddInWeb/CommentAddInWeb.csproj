@@ -128,7 +128,8 @@
     <None Include="Properties\PublishProfiles\brandotestforftp - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Dialog.html" />
+    <Content Include="Dialog\Dialog.html" />
+    <Content Include="Dialog\Dialog.js" />
     <Content Include="Functions\FunctionFile.html" />
     <Content Include="Functions\FunctionFile.js" />
     <Content Include="Global.asax" />
