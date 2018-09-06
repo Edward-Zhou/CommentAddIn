@@ -19,7 +19,7 @@
                 $('#button-text').text("Display!");
                 $('#button-desc').text("Display the selected text");
                 
-                $('#highlight-button').click(displaySelectedText);
+                $('#highlight-button').click(hightlightLongestWord);
                 return;
             }
 
