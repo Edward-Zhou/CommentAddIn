@@ -51,7 +51,6 @@ function eventHandler(arg) {
 
     // In addition to general system errors, there are 2 specific errors 
     // and one event that you can handle individually.
-    removeOoXml();
 
     switch (arg.error) {
         case 12002:
@@ -62,6 +61,8 @@ function eventHandler(arg) {
             break;
         case 12006:
             // The dialog was closed, typically because the user the pressed X button.
+            removeOoXml();
+
             showNotification("Dialog closed by user");
             break;
         default:
