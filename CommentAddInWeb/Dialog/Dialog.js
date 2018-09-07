@@ -3,26 +3,17 @@
         //Office is ready
         $(document).ready(function () {
             //the document is ready
-            $("#LoadComment").click(loadOoXml);
+            var ooXml = localStorage.getItem("ooXml");
+            if (ooXml != null) {
+                xmlToComments(ooXml);
+            }
         });
     };
 
     function loadOoXml() {
         console.log("Load Comment Button is clicked");
-        Word.run(function (context) {
-            // Create a proxy object for the document body.
-            var body = context.document.body;
-            // Queue a commmand to get the OOXML contents of the body.
-            var bodyOOXML = body.getOoxml();
-            // Synchronize the document state by executing the queued commands
-            // and return a promise to indicate task completion.
-            return context.sync()
-                .then(function () {
-                    currentOOXML = bodyOOXML.value;
-                    xmlToComments(currentOOXML);
-                });
-        })
-            .catch(errorHandler);
+        var ooXml = localStorage.getItem("ooXml");
+        xmlToComments(ooXml);
     }
     function xmlToComments(ooXml) {
         $.ajax({
