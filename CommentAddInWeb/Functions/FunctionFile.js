@@ -42,7 +42,7 @@ function dialogCallback(asyncResult) {
 
 
 function messageHandler(arg) {
-    dialog.close();
+    //dialog.close();
     showNotification(arg.message);
 }
 
@@ -78,25 +78,28 @@ function openDialog() {
 }
 
 function openDialogAsIframe() {
-    //IMPORTANT: IFrame mode only works in Online (Web) clients. Desktop clients (Windows, IOS, Mac) always display as a pop-up inside of Office apps. 
+    //IMPORTANT: IFrame mode only works in Online (Web) clients. Desktop clients (Windows, IOS, Mac) always display as a pop-up inside of Office apps.
     Office.context.ui.displayDialogAsync(window.location.origin + "/Dialog/Dialog.html",
         { height: 50, width: 50, displayInIframe: true }, dialogCallback);
 }
 
 function saveOoXml() {
     Word.run(function (context) {
-        // Create a proxy object for the document body.
-        var body = context.document.body;
-        // Queue a commmand to get the OOXML contents of the body.
-        var bodyOOXML = body.getOoxml();
-        // Synchronize the document state by executing the queued commands
-        // and return a promise to indicate task completion.
-        return context.sync()
-            .then(function () {
-                var currentOOXML = "";
-                currentOOXML = bodyOOXML.value;
-                localStorage.setItem("ooXml", currentOOXML);
-            });
+        return context.sync().then(function () {
+            // Create a proxy object for the document body.
+            var body = context.document.body;
+            // Queue a commmand to get the OOXML contents of the body.
+            var bodyOOXML = body.getOoxml();
+            // Synchronize the document state by executing the queued commands
+            // and return a promise to indicate task completion.
+            return context.sync()
+                .then(function () {
+                    var currentOOXML = "";
+                    currentOOXML = bodyOOXML.value;
+                    localStorage.setItem("ooXml", currentOOXML);
+                    openDialogAsIframe();
+                });
+        });
     });
 }
 

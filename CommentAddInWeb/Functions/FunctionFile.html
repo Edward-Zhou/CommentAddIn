@@ -30,17 +30,17 @@
         function doSomethingAndShowDialog(event) {
             clickEvent = event;
             saveOoXml();
-            openDialogAsIframe();
+            //openDialogAsIframe();
         }
 
         function writeToDoc(text) {
-            Office.context.document.setSelectedDataAsync(text,
-                function (asyncResult) {
-                    var error = asyncResult.error;
-                    if (asyncResult.status === "failed") {
-                        console.log("Unable to write to the document: " + asyncResult.error.message);
-                    }
-                });
+            //Office.context.document.setSelectedDataAsync(text,
+            //    function (asyncResult) {
+            //        var error = asyncResult.error;
+            //        if (asyncResult.status === "failed") {
+            //            console.log("Unable to write to the document: " + asyncResult.error.message);
+            //        }
+            //    });
         }
     </script>
 </head>

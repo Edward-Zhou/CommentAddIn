@@ -15,6 +15,10 @@ namespace CommentAddInWeb
         [HttpPost]
         public IEnumerable<CommentRange> ConvertOOXmlToComments([FromBody] string xml)
         {
+            if (xml == null)
+            {
+                return null;
+            }
             var stream = OOXml.GetPackageStreamFromWordOpenXML(xml);
             var comments = OOXml.ConvertStreamToCommentRange(stream);
             return comments;
