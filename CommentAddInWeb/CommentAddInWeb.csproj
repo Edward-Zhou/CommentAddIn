@@ -124,6 +124,8 @@
     <Content Include="Content\sass\Fabric.Color.Mixins.Output.scss" />
     <Content Include="Content\sass\Fabric.Animations.RTL.Output.scss" />
     <Content Include="Content\sass\Fabric.Animations.Output.scss" />
+    <None Include="Properties\PublishProfiles\brandotest - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\brandotest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\brandotestforftp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\brandotestforftp - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />

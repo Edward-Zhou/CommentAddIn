@@ -13,8 +13,8 @@
   <Id>5170e3e3-ac58-4bfa-9e11-20f62d9b71c5</Id>
 
   <!--Version. Updates from the store only get triggered if there is a version change. -->
-  <Version>1.0.0.0</Version>
-  <ProviderName>[Provider name]</ProviderName>
+  <Version>1.0.0.1</Version>
+  <ProviderName>Wicresoft</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
   <DisplayName DefaultValue="Wicresoft" />
